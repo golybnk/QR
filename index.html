@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta chartset="utf-8">
-<title></title>
-
-<style> 
-  body {
-    background-color: lightblue;
-    text-align: center;
-  }
-  
-  .lds-ring {
+  <meta charset="utf-8">
+  <title></title>
+  <style>
+      body {
+        background-color: lightblue;
+        text-align: center;
+      }
+      
+      .lds-ring {
   display: inline-block;
   position: relative;
   width: 80px;
@@ -45,30 +44,33 @@
     transform: rotate(360deg);
   }
 }
- 
 
-</style>
+  </style>
 </head>
-
 <body>
-<script>
-  const AS_URL_BASE = "https://script.google.com/macros/s/AKfycbzVcsswDrE7dsyPI81eIYUx54gbJspU7oubGe_5bl_eY56S1yHRuAfSNq6XYX1Tu6LNxw/exec";
-  var url = document.location.href;
-  var k = url.substr(url.lastIndexOf("k=")+2);
+  <script>
+    const AS_URL_BASE = "https://script.google.com/macros/s/AKfycbxmpr9PrhxFm-BDq7RZ1X6ytsxBC-m72oMHNnaJlEJ33Sm1MQsPZtcgItdbsIhMYSgYdA/exec";
+    
+    var url = document.location.href;
+    var k = url.substr(url.lastIndexOf("k=")+2);
+    
+    if(k){
+      fetch(AS_URL_BASE+'?k='+k)
+      .then(r => r.text())
+      .then((r) => {
+        console.log(r);
+        //document.write(r);
+        if(r){
+          document.location.replace(r);
+        }
+      })
+      .catch(err => console.log(err))
+    }
+
+  </script>
   
-  if(k){
-    fetch.(AS_URL_BASE+'?k='+k)
-    .then(r => r.text())
-    .then((r) => {
-      console.log(r);
-      //document.write(r);
-      if(r){
-        document.location.replace(r);
-      }
-    })
-    .catch(err => console.log(err))
-  }
-</script>
-<div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+  <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+  
+  
 </body>
 </html>
